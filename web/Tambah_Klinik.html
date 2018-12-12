@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <link rel="shortcut icon" href="picture/Artboard 2.png">
+        <title>Tambah_Klinik</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <style>
+            header img{
+                padding: 0px ;
+                text-align: right;
+                width: 5%;
+                float: left;
+                margin-bottom: 0px;
+            }
+            header {
+                padding: 10px 20px 30px 20px;
+                font-size: 20px;
+                margin: 0px 0px 0px 0px;
+            }
+            section {
+                padding: 10px 20px 200px 20px;
+                background-color: azure;
+                margin: 20px;
+            }
+            footer {
+                background-color: activecaption;
+                padding: 20px 10px 20px 20px;
+                text-align: left;
+                color: coral;
+            }
+            footer h5{
+                text-align: left ;
+                font-size: 12;
+                color: black;   
+            }
+        </style>
+    </head>
+    <body>
+        <header style="background-color: white">
+            <img src="picture/Artboard 2.png" alt="Rumah Sakit">
+            <h1>RUMAH SAKIT BHAYANGKARA</h1>  
+            <h6> POLDA DIY. JL. JOGJA-SOLO KM.14, KALASAN, SLEMAN, D.I. YOGYAKARTA 
+                TLP: 0274-165314060; E-mail: stfns_kvn@gmail.com.</h6>
+        </header>
+
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light sticky-top" id="ftco-navbar" >
+            <div class="container">
+                <img src="picture/Artboard 2.png" alt="Rumah Sakit" style="width: 4%" >
+                <a class="navbar-brand" href="RumahSakit_KU.html">Bhayangkara<span>Hospital</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
+                </button>
+
+                <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="RumahSakit_KU.html" class="nav-link">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Pasien
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Form_Pasien.html">Form Tambah Pasien</a>
+                                <a class="dropdown-item" href="Cari_Pasien.html">Cari Pasien</a>
+                                <a class="dropdown-item" href="tambahAntrian.html">Form Tambah Antrian</a>
+                                <a class="dropdown-item" href="cariAntrian.html">Cari Antrian</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Klinik
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Tambah_Klinik.html">Tambah Klinik</a>
+                                <a class="dropdown-item" href="bacaklinik.html">Baca Klinik</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Doctor
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Tambah_Doctor.html" >Tambah Doctor</a>
+                                <a class="dropdown-item" href="Baca_Doctor.html" >Baca Doctor</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section>
+
+            <form method="post" onsubmit="return make_json(this)">
+                <div class="form-group">
+                    <label>Id Klinik</label>
+                    <input type="text" class="form-control" id="idKlinik" placeholder="Masukan_ID_Klinik">        
+                </div>
+                <div class="form-group"> 
+                    <label>Nama Klinik</label>
+                    <input type="text" class="form-control" id="namaKlinik" placeholder="Masukan_Nama_Klinik">
+                </div>
+                <div class="form-group"> 
+                    <label>Spesialis</label>
+                    <input type="text" class="form-control" id="Spesialis" placeholder="Masukan_Spesialis">
+                </div>
+                <button type="submit" class="btn btn-outline-primary btn-sub" data-toggle="modal" data-target="#myModal2">Submit</button>
+
+            </form>
+        </section>
+        <pre id ="demo">
+
+        </pre>
+
+
+        <footer>
+            <h5>© Create stfns_kvn || Rumah Sakit Bhayangkara || Yogyakarta</h5> 
+        </footer>
+
+
+        <!--        tambah klinik-->
+        <script>
+            function make_json(form) {
+                var json =
+                        {
+                            "idKlinik": form.idKlinik.value,
+                            "nama": form.namaKlinik.value,
+                            "spesialis": form.Spesialis.value
+                        };
+                var html = JSON.stringify(json, 0, 100);
+//                var Url = "http://206.189.36.188:8080/myrs/webresources/pasien/tambahPasienBaru";
+//                var Url = "http://202.94.83.190:8080/rsku/webresources/klinik/tambahKlinik";
+                var Url = "http://202.94.83.190:8080/Bhayangkara_165314060__WebService/webresources/Klinik/addKlinik";
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", Url, false);
+                xhr.setRequestHeader("content-type", "application/json");
+                xhr.send(html);
+
+                document.getElementById("demo").innerHTML = html;
+                return false;
+            }
+        </script>
+    </body>
+</html>

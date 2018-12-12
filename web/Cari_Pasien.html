@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" href="picture/Artboard 2.png">
+        <title>Form_Antrian</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+
+        <style>
+            body{background-image:  url("picture/background.jpg")}
+            header{
+                padding: 10px 20px 30px 20px ;
+                font-size: 15px;
+                margin: 0px 0px 2px 0px;
+            }
+            header img{
+                padding: 5px ;
+                text-align: right;
+                width: 5%;
+                float: left;
+                margin-bottom: 5px;
+            }
+            section {
+                padding: 10px 20px 200px 20px;
+                background-color: azure;
+                margin: 20px;
+            }
+
+            button{
+                padding: 10px 50px 10px 50px;
+                background-color: lightgray;
+                margin: 10px;
+            }
+
+
+            footer {
+                background-color: activecaption;
+                padding: 20px 10px 20px 20px;
+                text-align: left;
+                color: coral;
+            }
+            footer h5{
+                text-align: left ;
+                font-size: 12;
+                color: black;   
+            }
+        </style>
+
+
+    </head>
+    <body>
+
+        <header style="background-color: white">
+            <img src="picture/Artboard 2.png" alt="Rumah Sakit">
+            <h1>RUMAH SAKIT BHAYANGKARA</h1>  
+            <h6> POLDA DIY. JL. JOGJA-SOLO KM.14, KALASAN, SLEMAN, D.I. YOGYAKARTA 
+                TLP: 0274-165314060; E-mail: stfns_kvn@gmail.com.</h6>
+        </header>
+
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light sticky-top" id="ftco-navbar" >
+            <div class="container">
+                <img src="picture/Artboard 2.png" alt="Rumah Sakit" style="width: 4%" >
+                <a class="navbar-brand" href="RumahSakit_KU.html">Bhayangkara<span>Hospital</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
+                </button>
+
+                <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="RumahSakit_KU.html" class="nav-link">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Pasien
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Form_Pasien.html">Form Tambah Pasien</a>
+                                <a class="dropdown-item" href="Cari_Pasien.html">Cari Pasien</a>
+                                <a class="dropdown-item" href="tambahAntrian.html">Form Tambah Antrian</a>
+                                <a class="dropdown-item" href="cariAntrian.html">Cari Antrian</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Klinik
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Tambah_Klinik.html">Tambah Klinik</a>
+                                <a class="dropdown-item" href="bacaklinik.html">Baca Klinik</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Doctor
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Tambah_Doctor.html" >Tambah Doctor</a>
+                                <a class="dropdown-item" href="Baca_Doctor.html" >Baca Doctor</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+         
+        <section>
+
+            <div id="demo">
+                <h2>Search Pasien</h2>
+                <label for="nama"><b>input</b></label> 
+                <input id = "nik" class="form-control" placeholder="Enter NIK" type="text" required>
+                <button type="button" onclick="loadDoc()" name="btn">Search</button>
+                <p id="output"></p>
+                <p id="out1"></p>
+            </div>
+<!--            <form method="post" onsubmit="return make_json(this)">
+                <div class="form-group">
+                    <label>Id Klinik</label>
+                    <input type="text" class="form-control" name="idKlinik" placeholder="Masukan_ID_Klinik">        
+                </div>
+                <div class="form-group"> 
+                    <label>Nama Klinik</label>
+                    <input type="text" class="form-control" name="namaKlinik" placeholder="Masukan_Nama_Klinik">
+                </div>
+                <button type="submit" class="btn btn-outline-primary btn-sub" data-toggle="modal" data-target="#myModal2">Submit</button>
+
+            </form>-->
+        </section>
+        <pre id ="demo">
+
+        </pre>
+
+
+        <footer>
+            <h5>© Create stfns_kvn || Rumah Sakit Bhayangkara || Yogyakarta</h5> 
+        </footer>
+
+
+        <!--        Cari Pasien-->
+        
+        <script>
+            function loadDoc() {
+                var Url = "http://206.189.38.188:8080/myrs/webresources/pasien/cariPasien?nik=" + nik.value;
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", Url, true);
+                xhttp.send();
+                document.getElementById("output").innerHTML = this.responseText;
+                xhttp.onreadystatechange = function () {
+                    
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("output").innerHTML = this.responseText;
+                        var myObj = JSON.parse(this.responseText);
+                        document.getElementById("nama").value = myObj.nama;
+                        document.getElementById("alamat").value = myObj.alamat;
+                        document.getElementById("noRm").value = myObj.noRm;
+                    }
+                }
+            }
+        </script>   
+        
+<!--        <script>
+            function make_json(form) {
+                var json =
+                        {
+                            "idKlinik": form.idKlinik.value,
+                            "nama": form.namaKlinik.value
+                        };
+
+                var html = JSON.stringify(json, 0, 100);
+
+
+                var html = JSON.stringify(json, 0, 100);
+//                var Url = "http://206.189.36.188:8080/myrs/webresources/pasien/tambahPasienBaru";
+//                var Url = "http://202.94.83.190:8080/rsku/webresources/pasien/tambahpasien";
+                var url = 'http://202.94.83.190:8080/Bhayangkara_165314060__WebService/webresources/Pasien/cariPasien';
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", Url, false);
+                xhr.setRequestHeader("content-type", "application/json");
+                xhr.send(html);
+
+                document.getElementById("demo").innerHTML = html;
+                return false;
+            }
+        </script>-->
+    </body>
+</html>
